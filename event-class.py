@@ -30,3 +30,14 @@ class AbcEvent(object):
           
     def RemoveSubscribersForEvent(self,objMethod):
         self.OnChange -= objMethod            
+
+def test(msg):
+    print('msg = ', msg)
+def make_something(senderEvent):
+    senderEvent.fire('hello')
+    
+if __name__ == "__main__":
+    sender_event = AbcEvent()
+    sender_event.AddSubscribersForEvent(test)
+    make_something(sender_event)
+    
